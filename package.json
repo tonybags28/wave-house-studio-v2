@@ -1,0 +1,16 @@
+{
+  "name": "wave-house-booking-system",
+  "version": "1.0.0",
+  "description": "Wave House Recording Studio Booking System",
+  "main": "src/main.py",
+  "scripts": {
+    "start": "python src/main.py",
+    "build": "cd frontend && npm run build && mkdir -p ../static && cp -r dist/* ../static/",
+    "dev": "python src/main.py"
+  },
+  "engines": {
+    "python": ">=3.8",
+    "node": ">=18.0.0"
+  }
+}
+
