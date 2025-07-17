@@ -365,10 +365,13 @@ def admin_dashboard():
     '''
 
 # Initialize database
-@app.before_first_request
 def create_tables():
     db.create_all()
     print("Database tables created successfully!")
+
+# Call create_tables when app starts
+with app.app_context():
+    create_tables()
 
 if __name__ == '__main__':
     with app.app_context():
