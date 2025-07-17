@@ -4,8 +4,8 @@
   "description": "Wave House Recording Studio Booking System",
   "main": "src/main.py",
   "scripts": {
+    "build": "echo 'Build completed - Flask will serve static files'",
     "start": "python src/main.py",
-    "build": "cd frontend && npm run build && mkdir -p ../static && cp -r dist/* ../static/",
     "dev": "python src/main.py"
   },
   "engines": {
@@ -13,4 +13,3 @@
     "node": ">=18.0.0"
   }
 }
-
