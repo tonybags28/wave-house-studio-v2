@@ -1,8 +1,25 @@
+# nixpacks.toml
+
+providers = ['python', 'node']
+
 [phases.setup]
-nixPkgs = ["python311", "nodejs_18"]
+nixPkgs = ['...', 'python311', 'nodejs_20']
 
 [phases.install]
-cmds = ["pip install -r requirements.txt"]
+dependsOn = ['setup']
+cmds = [
+  'pip install -r requirements.txt',
+  'cd frontend && npm install'
+]
+
+[phases.build]
+dependsOn = ['install']
+cmds = [
+  'cd frontend && npm run build',
+  'mkdir -p static',
+  'cp -r frontend/dist/* static/'
+]
 
 [start]
-cmd = "python src/main.py"
+cmd = 'gunicorn -b 0.0.0.0:$PORT --chdir src main:app'
+
